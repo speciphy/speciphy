@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+set_include_path(join(PATH_SEPARATOR, array(
+    realpath(__DIR__ . '/../src'),
+    realpath(__DIR__ . '/../examples/src'),
+    get_include_path(),
+)));
+
+require_once 'Speciphy/Describe.php';
+require_once 'Speciphy/Context.php';
+require_once 'SpeciphyExamples/Stack.php';
+
+$describe = require_once $argv[1];
+var_dump($describe);
