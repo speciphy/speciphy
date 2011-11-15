@@ -1,10 +1,8 @@
 <?php
-use Speciphy\Describe;
-use Speciphy\Context;
-use SpeciphyExamples\Stack;
+namespace Speciphy\DSL;
 
-return new Describe('Stack', array(
-    new Context('When empty', array(
+return describe('Stack', array(
+    context('When empty', array(
         'subject' => function () {
             return new Stack;
         },
@@ -14,7 +12,7 @@ return new Describe('Stack', array(
         },
     )),
 
-    new Context('When has 1 item', array(
+    context('When has 1 item', array(
         'subject' => function () {
             return new Stack(array(1));
         },
