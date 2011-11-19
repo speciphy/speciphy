@@ -93,10 +93,6 @@ class ExampleGroup
      */
     public function getNestLevel()
     {
-        if (empty($this->_parent)) {
-            return 0;
-        } else {
-            return $this->_parent->getNestLevel() + 1;
-        }
+        return isset($this->_parent) ? $this->_parent->getNestLevel() + 1 : 0;
     }
 }
