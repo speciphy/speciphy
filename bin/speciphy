@@ -8,7 +8,14 @@ set_include_path(join(PATH_SEPARATOR, array(
 
 require_once 'Speciphy/DSL.php';
 require_once 'Speciphy/Describe.php';
+require_once 'Speciphy/Loader/SpecFileLoader.php';
+require_once 'Speciphy/Loader/SpecFileLoader/SpecFileFilter.php';
 require_once 'SpeciphyExamples/Stack.php';
 
-$describe = require_once $argv[1];
-var_dump($describe);
+use Speciphy\Loader\SpecFileLoader;
+
+$files = new SpecFileLoader($argv[1]);
+var_dump($files);
+foreach ($files as $file) {
+    var_dump($file);
+}
