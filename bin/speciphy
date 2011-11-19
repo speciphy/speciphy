@@ -6,11 +6,8 @@ set_include_path(join(PATH_SEPARATOR, array(
     get_include_path(),
 )));
 
-require_once 'Speciphy/DSL.php';
-require_once 'Speciphy/Describe.php';
-require_once 'Speciphy/Loader/SpecFileLoader.php';
-require_once 'Speciphy/Loader/SpecFileLoader/SpecFileFilter.php';
-require_once 'SpeciphyExamples/Stack.php';
+require_once 'Speciphy/Autoloader.php';
+Speciphy\Autoloader::register();
 
 use Speciphy\Loader\SpecFileLoader;
 
