@@ -1,7 +1,9 @@
 <?php
 namespace Speciphy;
 
-class Example
+use Speciphy\ExampleInterface;
+
+class Example implements ExampleInterface
 {
     /**
      * Context of this example.
@@ -31,11 +33,25 @@ class Example
      * @param string
      * @param Closure
      */
-    public function __construct($exampleGroup, $description, $block)
+    public function __construct($description, $block)
     {
-        $this->_exampleGroup = $exampleGroup;
         $this->_description  = $description;
         $this->_block        = $block;
+    }
+
+    /**
+     * Gets the parent of this example.
+     *
+     * @return Speciphy\ExampleGroup
+     */
+    public function getExampleGroup()
+    {
+        return $this->_exampleGroup;
+    }
+
+    public function setParent($parent)
+    {
+        $this->_exampleGroup = $parent;
     }
 
     /**
@@ -61,5 +77,15 @@ class Example
         } catch (\Exception $e) {
         }
         $this->_exampleGroup->runAfterHooks();
+    }
+
+    /**
+     * Whether this is pending.
+     *
+     * @return bool
+     */
+    public function isPending()
+    {
+        return false;
     }
 }

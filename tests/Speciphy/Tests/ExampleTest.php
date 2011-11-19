@@ -10,7 +10,9 @@ class ExampleTest extends TestCase
      */
     public function getDescription_should_be_description_of_the_example()
     {
-        $example = new Example($this->getMockExampleGroup(), 'Foo', function () {});
+        $exampleGroup = $this->getMockExampleGroup();
+        $example = new Example('Foo', function () {});
+        $exampleGroup->addChild($example);
         $this->assertSame('Foo', $example->getDescription());
     }
 
@@ -22,7 +24,8 @@ class ExampleTest extends TestCase
         $exampleGroup = $this->getMockExampleGroup();
         $exampleGroup->expects($this->once())
             ->method('runBeforeHooks');
-        $example = new Example($exampleGroup, 'Example', function () {});
+        $example = new Example('Example', function () {});
+        $exampleGroup->addChild($example);
         $example->run();
     }
 
@@ -34,7 +37,8 @@ class ExampleTest extends TestCase
         $exampleGroup = $this->getMockExampleGroup();
         $exampleGroup->expects($this->once())
             ->method('runAfterHooks');
-        $example = new Example($exampleGroup, 'Example', function () {});
+        $example = new Example('Foo', function () {});
+        $exampleGroup->addChild($example);
         $example->run();
     }
 
@@ -46,17 +50,21 @@ class ExampleTest extends TestCase
         $exampleGroup = $this->getMockExampleGroup();
         $exampleGroup->expects($this->once())
             ->method('runAfterHooks');
-        $example = new Example($exampleGroup, 'Example', function () {
+        $example = new Example('Example', function () {
             throw new \RuntimeException;
         });
+        $exampleGroup->addChild($example);
         $example->run();
     }
 
-    protected function getMockExampleGroup()
+    protected function getMockExampleGroup($methods = array('runBeforeHooks', 'runAfterHooks'))
     {
+        if (is_string($methods)) {
+            $methods = array($methods);
+        }
         return $this->getMock(
             'Speciphy\ExampleGroup',
-            array(),
+            $methods,
             array(),
             'MockExampleGroup_' . uniqid(),
             false
