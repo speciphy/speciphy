@@ -8,11 +8,12 @@ set_include_path(join(PATH_SEPARATOR, array(
 
 require_once 'Speciphy/Autoloader.php';
 Speciphy\Autoloader::register();
+require_once 'Speciphy/DSL.php';
 
 use Speciphy\Loader\SpecFileLoader;
 
 $files = new SpecFileLoader($argv[1]);
 var_dump($files);
 foreach ($files as $file) {
-    var_dump($file);
+    var_dump(include $file->getRealpath());
 }
