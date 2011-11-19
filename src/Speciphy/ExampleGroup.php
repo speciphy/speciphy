@@ -85,4 +85,18 @@ class ExampleGroup
 
     public function runAfterHooks()
     {}
+
+    /**
+     * Gets the nest level.
+     *
+     * @return int
+     */
+    public function getNestLevel()
+    {
+        if (empty($this->_parent)) {
+            return 0;
+        } else {
+            return $this->_parent->getNestLevel() + 1;
+        }
+    }
 }
