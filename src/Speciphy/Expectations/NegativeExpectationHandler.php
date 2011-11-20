@@ -19,9 +19,8 @@ class NegativeExpectationHandler
     public static function handleMatcher($actual, $matcher, $reporter)
     {
         if ($matcher->match($actual)) {
-            $reporter->push("Not {$matcher->getName()} failure.");
+            throw new \Exception("Not {$matcher->getName()} failed.");
         } else {
-            $reporter->push("Not {$matcher->getName()} success.");
         }
     }
 

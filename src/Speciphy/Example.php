@@ -69,12 +69,15 @@ class Example implements ExampleInterface
      *
      * @return void
      */
-    public function run($exampleGroup = NULL)
+    public function run($exampleGroup = NULL, $reporter = NULL)
     {
+        $reporter->exampleStarted($this);
         $this->_exampleGroup->runBeforeHooks();
         try {
             $this->_block->__invoke($exampleGroup);
+            $reporter->examplePassed($this);
         } catch (\Exception $e) {
+            $reporter->exampleFailed($this);
         }
         $this->_exampleGroup->runAfterHooks();
     }

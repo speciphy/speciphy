@@ -15,8 +15,13 @@ require_once 'SpeciphyExamples/Stack.php';
 use Speciphy\Loader\SpecFileLoader;
 use Speciphy\ExampleGroupIterator;
 use Speciphy\Reporter;
+use Speciphy\Formatters\ProgressFormatter;
+use Speciphy\Formatters\DocumentationFormatter;
 
 $reporter = new Reporter;
+$docFormatter = new DocumentationFormatter;
+$reporter->addFormatter(new ProgressFormatter(fopen('php://stdout', 'w')));
+$reporter->addFormatter($docFormatter);
 
 $files = new SpecFileLoader($argv[1]);
 foreach ($files as $file) {
@@ -24,4 +29,4 @@ foreach ($files as $file) {
     $exampleGroup->run($reporter);
 }
 
-var_dump($reporter);
+echo PHP_EOL, PHP_EOL, $docFormatter->get();

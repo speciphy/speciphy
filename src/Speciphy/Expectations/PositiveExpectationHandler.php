@@ -19,9 +19,8 @@ class PositiveExpectationHandler
     public static function handleMatcher($actual, $matcher, $reporter)
     {
         if ($matcher->match($actual)) {
-            $reporter->push("{$matcher->getName()} success.");
         } else {
-            $reporter->push("{$matcher->getName()} failure.");
+            throw new \Exception("{$matcher->getName()} failed.");
         }
     }
 
