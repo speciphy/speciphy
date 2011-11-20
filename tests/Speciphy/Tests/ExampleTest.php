@@ -25,7 +25,8 @@ class ExampleTest extends TestCase
         $exampleGroup->expects($this->once())
             ->method('runBeforeHooks');
         $example = new Example('Example', function () {});
-        $example->run($exampleGroup, $this->getMockReporter());
+        $exampleGroup->addChild($example);
+        $example->run($this->getMockReporter());
     }
 
     /**
@@ -37,7 +38,8 @@ class ExampleTest extends TestCase
         $exampleGroup->expects($this->once())
             ->method('runAfterHooks');
         $example = new Example('Foo', function () {});
-        $example->run($exampleGroup, $this->getMockReporter());
+        $exampleGroup->addChild($example);
+        $example->run($this->getMockReporter());
     }
 
     /**
@@ -51,7 +53,8 @@ class ExampleTest extends TestCase
         $example = new Example('Example', function () {
             throw new \RuntimeException;
         });
-        $example->run($exampleGroup, $this->getMockReporter());
+        $exampleGroup->addChild($example);
+        $example->run($this->getMockReporter());
     }
 
     protected function getMockExampleGroup($methods = array('runBeforeHooks', 'runAfterHooks'))

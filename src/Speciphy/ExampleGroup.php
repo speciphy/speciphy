@@ -93,11 +93,7 @@ class ExampleGroup
         $reporter->exampleGroupStarted($this);
         $this->runBeforeAllHooks();
         foreach ($this->getExamples() as $example) {
-            if ($example->isExampleGroup()) {
-                $example->run($reporter);
-            } else {
-                $example->run($this, $reporter);
-            }
+            $example->run($reporter);
         }
         $this->runAfterAllHooks();
     }
