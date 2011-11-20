@@ -28,6 +28,6 @@ class ProgressFormatter
 
     public function examplePending($example)
     {
-        fputs($this->_fp, '*');
+        fputs($this->_fp, 'P');
     }
 }
