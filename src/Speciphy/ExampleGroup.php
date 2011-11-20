@@ -1,9 +1,10 @@
 <?php
 namespace Speciphy;
 
+use RecursiveIterator;
 use Speciphy\ExampleInterface;
 
-class ExampleGroup
+class ExampleGroup implements RecursiveIterator
 {
     /**
      * Text represents this ExampleGroup.
@@ -32,6 +33,13 @@ class ExampleGroup
      * @var Closure
      */
     protected $_subject;
+
+    /**
+     * Pointer of iterator.
+     *
+     * @var int
+     */
+    protected $_pointer;
 
     /**
      * Constructor.
@@ -66,6 +74,11 @@ class ExampleGroup
         $this->_examples[] = $child;
     }
 
+    public function getExamples()
+    {
+        return $this->_examples;
+    }
+
     public function setParent($parent)
     {
         $this->_parent = $parent;
@@ -94,5 +107,40 @@ class ExampleGroup
     public function getNestLevel()
     {
         return isset($this->_parent) ? $this->_parent->getNestLevel() + 1 : 0;
+    }
+
+    public function rewind()
+    {
+        $this->_pointer = 0;
+    }
+
+    public function key()
+    {
+        return $this->_pointer;
+    }
+
+    public function current()
+    {
+        return $this->_examples[$this->key()];
+    }
+
+    public function valid()
+    {
+        return $this->key() < count($this->_examples);
+    }
+
+    public function next()
+    {
+        $this->_pointer++;
+    }
+
+    public function hasChildren()
+    {
+        return $this->current() instanceof ExampleGroup;
+    }
+
+    public function getChildren()
+    {
+        return $this->current();
     }
 }

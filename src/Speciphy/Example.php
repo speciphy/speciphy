@@ -88,4 +88,9 @@ class Example implements ExampleInterface
     {
         return false;
     }
+
+    public function getNestLevel()
+    {
+        return $this->_exampleGroup->getNestLevel() + 1;
+    }
 }
