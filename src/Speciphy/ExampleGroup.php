@@ -2,6 +2,8 @@
 namespace Speciphy;
 
 use Speciphy\ExampleInterface;
+use Speciphy\Expectations\PositiveExpectationHandler;
+use Speciphy\Expectations\NegativeExpectationHandler;
 
 class ExampleGroup
 {
@@ -85,11 +87,44 @@ class ExampleGroup
         }
     }
 
+    public function run($reporter)
+    {
+        $this->_reporter = $reporter;
+
+        $this->runBeforeAllHooks();
+        foreach ($this->getExamples() as $example) {
+            if ($example->isExampleGroup()) {
+                $example->run($reporter);
+            } else {
+                $example->run($this, $reporter);
+            }
+        }
+        $this->runAfterAllHooks();
+    }
+
+    public function runBeforeAllHooks()
+    {}
+
+    public function runAfterAllHooks()
+    {}
+
     public function runBeforeHooks()
     {}
 
     public function runAfterHooks()
     {}
+
+    public function should()
+    {
+        $subject = $this->_subjectBlock->__invoke();
+        return new PositiveExpectationHandler($subject, $this->_reporter);
+    }
+
+    public function shouldNot()
+    {
+        $subject = $this->_subjectBlock->__invoke();
+        return new NegativeExpectationHandler($subject, $this->_reporter);
+    }
 
     public function setSubjectBlock(\Closure $subjectBlock)
     {
@@ -109,5 +144,10 @@ class ExampleGroup
     public function getNestLevel()
     {
         return isset($this->_parent) ? $this->_parent->getNestLevel() + 1 : 0;
+    }
+
+    public function isExampleGroup()
+    {
+        return true;
     }
 }

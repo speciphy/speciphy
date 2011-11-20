@@ -57,4 +57,9 @@ class Pending implements ExampleInterface
     {
         return true;
     }
+
+    public function isExampleGroup()
+    {
+        return false;
+    }
 }

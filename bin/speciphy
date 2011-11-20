@@ -10,16 +10,18 @@ require_once 'Speciphy/Autoloader.php';
 Speciphy\Autoloader::register();
 require_once 'Speciphy/DSL.php';
 
+require_once 'SpeciphyExamples/Stack.php';
+
 use Speciphy\Loader\SpecFileLoader;
 use Speciphy\ExampleGroupIterator;
+use Speciphy\Reporter;
+
+$reporter = new Reporter;
 
 $files = new SpecFileLoader($argv[1]);
 foreach ($files as $file) {
     $exampleGroup = include $file->getRealpath();
-    $iterator = new RecursiveIteratorIterator(new ExampleGroupIterator($exampleGroup), RecursiveIteratorIterator::SELF_FIRST);
-    echo $exampleGroup->getDescription(), PHP_EOL;
-    foreach ($iterator as $example) {
-        echo str_repeat('  ', $example->getNestLevel());
-        echo $example->getDescription(), PHP_EOL;
-    }
+    $exampleGroup->run($reporter);
 }
+
+var_dump($reporter);

@@ -1,4 +1,10 @@
 <?php
 namespace SpeciphyExamples;
 
-class Stack {}
+class Stack
+{
+    public function isEmpty()
+    {
+        return true;
+    }
+}

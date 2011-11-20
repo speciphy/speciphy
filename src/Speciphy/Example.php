@@ -69,11 +69,11 @@ class Example implements ExampleInterface
      *
      * @return void
      */
-    public function run()
+    public function run($exampleGroup = NULL)
     {
         $this->_exampleGroup->runBeforeHooks();
         try {
-            $this->_block->__invoke();
+            $this->_block->__invoke($exampleGroup);
         } catch (\Exception $e) {
         }
         $this->_exampleGroup->runAfterHooks();
@@ -92,5 +92,10 @@ class Example implements ExampleInterface
     public function getNestLevel()
     {
         return $this->_exampleGroup->getNestLevel() + 1;
+    }
+
+    public function isExampleGroup()
+    {
+        return false;
     }
 }
