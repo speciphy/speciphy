@@ -48,6 +48,11 @@ class Pending implements ExampleInterface
         return $this->_exampleGroup;
     }
 
+    public function getNestLevel()
+    {
+        return $this->_exampleGroup->getNestLevel() + 1;
+    }
+
     /**
      * Whether this is pending.
      *

@@ -95,6 +95,8 @@ class ExampleGroup
         foreach ($this->getExamples() as $example) {
             if ($example->isExampleGroup()) {
                 $example->run($reporter);
+            } else if ($example->isPending()) {
+                $reporter->examplePending($example);
             } else {
                 $example->run($this, $reporter);
             }
