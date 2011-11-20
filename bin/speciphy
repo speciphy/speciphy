@@ -11,26 +11,15 @@ Speciphy\Autoloader::register();
 require_once 'Speciphy/DSL.php';
 
 use Speciphy\Loader\SpecFileLoader;
+use Speciphy\ExampleGroupIterator;
 
 $files = new SpecFileLoader($argv[1]);
 foreach ($files as $file) {
     $exampleGroup = include $file->getRealpath();
-    $iterator = new RecursiveIteratorIterator($exampleGroup);
-    dump($exampleGroup);
-}
-
-function dump($iterator) {
-    echo $iterator->getDescription(), PHP_EOL;
-    _dump($iterator);
-}
-
-function _dump($iterator) {
-    for ($iterator->rewind(); $iterator->valid(); $iterator->next()) {
-        $current = $iterator->current();
-        echo str_repeat('  ', $current->getNestLevel());
-        echo $current->getDescription(), PHP_EOL;
-        if ($iterator->hasChildren()) {
-            _dump($iterator->getChildren());
-        }
+    $iterator = new RecursiveIteratorIterator(new ExampleGroupIterator($exampleGroup), RecursiveIteratorIterator::SELF_FIRST);
+    echo $exampleGroup->getDescription(), PHP_EOL;
+    foreach ($iterator as $example) {
+        echo str_repeat('  ', $example->getNestLevel());
+        echo $example->getDescription(), PHP_EOL;
     }
 }
