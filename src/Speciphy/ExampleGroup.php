@@ -32,7 +32,7 @@ class ExampleGroup implements RecursiveIterator
      *
      * @var Closure
      */
-    protected $_subject;
+    protected $_subjectBlock;
 
     /**
      * Pointer of iterator.
@@ -98,6 +98,16 @@ class ExampleGroup implements RecursiveIterator
 
     public function runAfterHooks()
     {}
+
+    public function setSubjectBlock(\Closure $subjectBlock)
+    {
+        $this->_subjectBlock = $subjectBlock;
+    }
+
+    public function getSubjectBlock()
+    {
+        return $this->_subjectBlock;
+    }
 
     /**
      * Gets the nest level.

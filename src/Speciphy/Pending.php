@@ -23,9 +23,8 @@ class Pending implements ExampleInterface
      * @param Speciphy\ExampleGroup
      * @param string
      */
-    public function __construct($exampleGroup, $description)
+    public function __construct($description)
     {
-        $this->_exampleGroup = $exampleGroup;
         $this->_description  = $description;
     }
 
@@ -37,6 +36,16 @@ class Pending implements ExampleInterface
     public function getDescription()
     {
         return $this->_description;
+    }
+
+    public function setParent($parent)
+    {
+        $this->_exampleGroup = $parent;
+    }
+
+    public function getExampleGroup()
+    {
+        return $this->_exampleGroup;
     }
 
     /**

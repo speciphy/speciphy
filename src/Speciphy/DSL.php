@@ -9,9 +9,7 @@ function describe($description, $specElements) {
     $exampleGroup = new ExampleGroup($description);
 
     foreach ($specElements as $key => $value) {
-        if (is_string($key) && $value instanceof \Closure) {
-            $exampleGroup->addChild(new Example($key, $value));
-        } else if (is_int($key)) {
+        if (is_int($key)) {
             if ($value instanceof ExampleGroup) {
                 $exampleGroup->addChild($value);
             } else if (is_string($value)) {
@@ -36,6 +34,8 @@ function describe($description, $specElements) {
             case 'afterAll':
                 $exampleGroup->setAfterAllHook($value);
                 break;
+            default:
+                $exampleGroup->addChild(new Example($key, $value));
             }
         }
     }
