@@ -6,6 +6,6 @@ namespace Speciphy\Tests;
  *
  * @author Yuya Takeyama
  */
-class TestCase extends \PHPUnit_Framework_Testcase
+class TestCase extends \PHPUnit_Framework_TestCase
 {
 }
