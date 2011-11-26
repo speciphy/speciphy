@@ -15,12 +15,11 @@ function describe($description, $specElements) {
                 $exampleGroup->addChild($value);
             } else if (is_string($value)) {
                 $exampleGroup->addChild(new Pending($value));
+            } else if ($value instanceof Subject) {
+                $exampleGroup->setSubject($value);
             }
         } else if (is_string($key)) {
             switch ($key) {
-            case 'subject':
-                $exampleGroup->setSubject(new Subject($value));
-                break;
             case 'before':
                 $exampleGroup->setBeforeHook($value);
                 break;

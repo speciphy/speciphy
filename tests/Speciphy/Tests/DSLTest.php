@@ -59,7 +59,7 @@ class DSLTest extends TestCase
     {
         $f = function () {};
         $exampleGroup = DSL\describe('Foo', array(
-            'subject' => $f,
+            DSL\subject($f),
         ));
         $this->assertSame($f, $exampleGroup->getSubject()->getBlock());
     }
@@ -70,7 +70,7 @@ class DSLTest extends TestCase
     public function subject_is_not_an_Example()
     {
         $exampleGroup = DSL\describe('Foo', array(
-            'subject' => function () {},
+            DSL\subject(function () {}),
         ));
         $this->assertSame(0, count($exampleGroup->getExamples()));
     }
