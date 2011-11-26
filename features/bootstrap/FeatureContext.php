@@ -7,12 +7,8 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
-//
-// Require 3rd-party libraries here:
-//
-//   require_once 'PHPUnit/Autoload.php';
-//   require_once 'PHPUnit/Framework/Assert/Functions.php';
-//
+require_once 'PHPUnit/Autoload.php';
+require_once 'PHPUnit/Framework/Assert/Functions.php';
 
 /**
  * Features context.
@@ -52,15 +48,23 @@ class FeatureContext extends BehatContext
     {
         $cwd = getcwd();
         chdir($this->sandboxDir);
-        exec("{$this->executable} {$args}");
+        ob_start();
+        $this->output = shell_exec("{$this->executable} {$args} 2>&1");
+        ob_end_flush();
         chdir($cwd);
     }
 
     /**
-     * @Then /^I should get output like:$/
+     * @Then /^The output should contain:$/
      */
-    public function iShouldGetOutputLike(PyStringNode $string)
+    public function theOutputShouldContain(PyStringNode $string)
     {
-        throw new PendingException();
+        try {
+            assertContains((string)$string, $this->output);
+        }
+        catch (Exception $e) {
+            $diff = PHPUnit_Framework_TestFailure::exceptionToString($e);
+            throw new Exception($diff, $e->getCode(), $e);
+        }
     }
 }
