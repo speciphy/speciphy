@@ -60,7 +60,7 @@ class DSLTest extends TestCase
         $exampleGroup = DSL\describe('Foo', array(
             'subject' => $f,
         ));
-        $this->assertSame($f, $exampleGroup->getSubjectBlock());
+        $this->assertSame($f, $exampleGroup->getSubject()->getBlock());
     }
 
     /**

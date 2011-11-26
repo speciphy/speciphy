@@ -29,11 +29,11 @@ class ExampleGroup
     protected $_parent;
 
     /**
-     * Function returns subject under test.
+     * Subject under test.
      *
-     * @var Closure
+     * @var Speciphy\Subject
      */
-    protected $_subjectBlock;
+    protected $_subject;
 
     /**
      * Constructor.
@@ -122,14 +122,14 @@ class ExampleGroup
         return new NegativeExpectationHandler($subject, $this->_reporter);
     }
 
-    public function setSubjectBlock(\Closure $subjectBlock)
+    public function setSubject(Subject $subject)
     {
-        $this->_subjectBlock = $subjectBlock;
+        $this->_subject = $subject;
     }
 
-    public function getSubjectBlock()
+    public function getSubject()
     {
-        return $this->_subjectBlock;
+        return $this->_subject;
     }
 
     /**

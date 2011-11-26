@@ -4,6 +4,7 @@ namespace Speciphy\DSL;
 use Speciphy\ExampleGroup;
 use Speciphy\Example;
 use Speciphy\Pending;
+use Speciphy\Subject;
 
 function describe($description, $specElements) {
     $exampleGroup = new ExampleGroup($description);
@@ -18,7 +19,7 @@ function describe($description, $specElements) {
         } else if (is_string($key)) {
             switch ($key) {
             case 'subject':
-                $exampleGroup->setSubjectBlock($value);
+                $exampleGroup->setSubject(new Subject($value));
                 break;
             case 'before':
                 $exampleGroup->setBeforeHook($value);
