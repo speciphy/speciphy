@@ -27,7 +27,9 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
-        $this->sandboxRoot = realpath(__DIR__ . '/../../sandbox');
+        $this->rootDir = realpath(__DIR__ . '/../..');
+        $this->executable = $this->rootDir . '/bin/speciphy';
+        $this->sandboxDir = $this->rootDir . '/sandbox';
     }
 
     /**
@@ -35,7 +37,7 @@ class FeatureContext extends BehatContext
      */
     public function aFileNamedWith($filename, PyStringNode $content)
     {
-        $filepath = "{$this->sandboxRoot}/{$filename}";
+        $filepath = "{$this->sandboxDir}/{$filename}";
         $filedir  = dirname($filepath);
         if (!file_exists($filedir)) {
             exec("mkdir -p " . escapeshellarg($filedir));
@@ -44,11 +46,14 @@ class FeatureContext extends BehatContext
     }
 
     /**
-     * @When /^I run Speciphy executable$/
+     * @When /^I run Speciphy executable with args "([^"]*)"$/
      */
-    public function iRunSpeciphyExecutable()
+    public function iRunSpeciphyExecutableWithArgs($args)
     {
-        throw new PendingException();
+        $cwd = getcwd();
+        chdir($this->sandboxDir);
+        exec("{$this->executable} {$args}");
+        chdir($cwd);
     }
 
     /**

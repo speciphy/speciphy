@@ -17,7 +17,7 @@ Feature: Speciphy executable
           }),
       ));
       """
-    When I run Speciphy executable
+    When I run Speciphy executable with args "."
     Then I should get output like:
       """
       .
