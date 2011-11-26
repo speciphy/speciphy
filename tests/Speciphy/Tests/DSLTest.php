@@ -73,4 +73,20 @@ class DSLTest extends TestCase
         ));
         $this->assertSame(0, count($exampleGroup->getExamples()));
     }
+
+    /**
+     * @test
+     */
+    public function it_function_without_Closure_should_be_Pending_object()
+    {
+        $this->assertInstanceOf('Speciphy\\Pending', DSL\it('should be foo'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_function_with_Closure_should_be_Example_object()
+    {
+        $this->assertInstanceOf('Speciphy\\Example', DSL\it('should be foo', function () {}));
+    }
 }

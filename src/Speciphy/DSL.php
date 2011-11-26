@@ -46,3 +46,11 @@ function describe($description, $specElements) {
 function context($description, $examples) {
     return describe($description, $examples);
 }
+
+function it($description, $block = NULL) {
+    if (is_null($block)) {
+        return new Pending($description);
+    } else {
+        return new Example($description, $block);
+    }
+}
