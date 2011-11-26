@@ -3,6 +3,7 @@ namespace Speciphy\Tests;
 
 require_once 'Speciphy/DSL.php';
 use Speciphy\DSL;
+use Speciphy\Subject;
 
 class DSLTest extends TestCase
 {
@@ -88,5 +89,23 @@ class DSLTest extends TestCase
     public function it_function_with_Closure_should_be_Example_object()
     {
         $this->assertInstanceOf('Speciphy\\Example', DSL\it('should be foo', function () {}));
+    }
+
+    /**
+     * @test
+     */
+    public function subject_function_should_be_Subject_object()
+    {
+        $this->assertInstanceOf('Speciphy\\Subject', DSL\subject(function () {}));
+    }
+
+    /**
+     * @test
+     */
+    public function subject_function_should_be_Subject_object_has_Closure_set_as_argument()
+    {
+        $block = function () {};
+        $subject = new Subject($block);
+        $this->assertSame($block, $subject->getBlock());
     }
 }
