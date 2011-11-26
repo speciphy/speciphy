@@ -11,7 +11,7 @@ function describe($description, $specElements) {
 
     foreach ($specElements as $key => $value) {
         if (is_int($key)) {
-            if ($value instanceof ExampleGroup) {
+            if ($value instanceof ExampleGroup || $value instanceof Example) {
                 $exampleGroup->addChild($value);
             } else if (is_string($value)) {
                 $exampleGroup->addChild(new Pending($value));
@@ -34,8 +34,6 @@ function describe($description, $specElements) {
             case 'afterAll':
                 $exampleGroup->setAfterAllHook($value);
                 break;
-            default:
-                $exampleGroup->addChild(new Example($key, $value));
             }
         }
     }

@@ -30,12 +30,13 @@ class DSLTest extends TestCase
     public function describe_creates_ExampleGroup_have_Example_set_with_array()
     {
         $exampleGroup = DSL\describe('Foo', array(
-            'It should be foo.' => function () {},
+            DSL\it('should be foo', function () {
+            }),
         ));
         $examples = $exampleGroup->getExamples();
         $example  = $examples[0];
         $this->assertInstanceOf('Speciphy\Example', $example);
-        $this->assertSame('It should be foo.', $example->getDescription());
+        $this->assertSame('should be foo', $example->getDescription());
     }
 
     /**
