@@ -23,5 +23,5 @@ Feature: Speciphy executable
       .
 
       Boolean true
-        It should be true
+        should be true
       """

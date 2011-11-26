@@ -28,4 +28,8 @@ class PositiveExpectationHandler
         $matcher = new BeEmptyMatcher;
         $this->handleMatcher($this->_actual, $matcher);
     }
+
+    public function beTrue()
+    {
+    }
 }
