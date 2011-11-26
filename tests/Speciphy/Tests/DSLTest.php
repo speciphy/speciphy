@@ -71,6 +71,6 @@ class DSLTest extends TestCase
         $exampleGroup = DSL\describe('Foo', array(
             'subject' => function () {},
         ));
-        $this->assertCount(0, $exampleGroup->getExamples());
+        $this->assertSame(0, count($exampleGroup->getExamples()));
     }
 }
