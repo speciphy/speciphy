@@ -1,5 +1,7 @@
 <?php
 namespace Speciphy;
+use Speciphy\Expectations\PositiveExpectationHandler;
+use Speciphy\Expectations\NegativeExpectationHandler;
 
 class Subject
 {
@@ -28,5 +30,17 @@ class Subject
     public function getBlock()
     {
         return $this->_block;
+    }
+
+    public function should()
+    {
+        $subject = call_user_func($this->getBlock());
+        return new PositiveExpectationHandler($subject);
+    }
+
+    public function shouldNot()
+    {
+        $subject = call_user_func($this->getBlock());
+        return new NegativeExpectationHandler($subject);
     }
 }

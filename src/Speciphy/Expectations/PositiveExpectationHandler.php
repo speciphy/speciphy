@@ -10,13 +10,12 @@ class PositiveExpectationHandler
      *
      * @param mixed $subject
      */
-    public function __construct($actual, $reporter)
+    public function __construct($actual)
     {
         $this->_actual = $actual;
-        $this->_reporter = $reporter;
     }
 
-    public static function handleMatcher($actual, $matcher, $reporter)
+    public static function handleMatcher($actual, $matcher)
     {
         if ($matcher->match($actual)) {
         } else {
@@ -27,6 +26,6 @@ class PositiveExpectationHandler
     public function beEmpty()
     {
         $matcher = new BeEmptyMatcher;
-        $this->handleMatcher($this->_actual, $matcher, $this->_reporter);
+        $this->handleMatcher($this->_actual, $matcher);
     }
 }

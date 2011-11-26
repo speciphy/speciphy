@@ -74,7 +74,7 @@ class Example implements ExampleInterface
         $reporter->exampleStarted($this);
         $this->_exampleGroup->runBeforeHooks();
         try {
-            $this->_block->__invoke($this->_exampleGroup);
+            call_user_func($this->_block, $this->_exampleGroup->getSubject());
             $reporter->examplePassed($this);
         } catch (\Exception $e) {
             $reporter->exampleFailed($this);

@@ -2,8 +2,6 @@
 namespace Speciphy;
 
 use Speciphy\ExampleInterface;
-use Speciphy\Expectations\PositiveExpectationHandler;
-use Speciphy\Expectations\NegativeExpectationHandler;
 
 class ExampleGroup
 {
@@ -109,18 +107,6 @@ class ExampleGroup
 
     public function runAfterHooks()
     {}
-
-    public function should()
-    {
-        $subject = $this->_subjectBlock->__invoke();
-        return new PositiveExpectationHandler($subject, $this->_reporter);
-    }
-
-    public function shouldNot()
-    {
-        $subject = $this->_subjectBlock->__invoke();
-        return new NegativeExpectationHandler($subject, $this->_reporter);
-    }
 
     public function setSubject(Subject $subject)
     {
