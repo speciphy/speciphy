@@ -13,7 +13,7 @@ Feature: Speciphy executable
           }),
 
           it('should be true', function ($it) {
-              $it->should()->beTrue();
+              $it->should->beTrue();
           }),
       ));
       """
@@ -38,7 +38,7 @@ Feature: Speciphy executable
           }),
 
           it('should be true', function ($it) {
-              $it->should()->beTrue();
+              $it->should->beTrue();
           }),
       ));
       """
