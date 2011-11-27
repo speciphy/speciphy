@@ -20,7 +20,7 @@ class Matchers
     public static function define($name, $matcherClass)
     {
         $instance = Matchers::getInstance();
-        $instance->addMatcher($name, $matcher);
+        $instance->addMatcher($name, $matcherClass);
     }
 
     public function addMatcher($name, $matcherClass)

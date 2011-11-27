@@ -1,35 +1,21 @@
 <?php
 namespace Speciphy\Expectations;
 
-use Speciphy\Matchers\BeEmptyMatcher;
+use Speciphy\Expectations\ExpectationHandlerAbstract;
+use Speciphy\Matchers\MatcherAbstract as Matcher;
 
-class PositiveExpectationHandler
+class PositiveExpectationHandler extends ExpectationHandlerAbstract
 {
-    /**
-     * Constructor.
-     *
-     * @param mixed $subject
-     */
-    public function __construct($actual)
+    public function handleMatcher(Matcher $matcher)
     {
-        $this->_actual = $actual;
-    }
-
-    public static function handleMatcher($actual, $matcher)
-    {
-        if ($matcher->match($actual)) {
+        if ($matcher->matches($this->_actual)) {
         } else {
-            throw new \Exception("{$matcher->getName()} failed.");
+            throw new \Exception($this->getMessage($matcher));
         }
     }
 
-    public function beEmpty()
+    public function getMessage(Matcher $matcher)
     {
-        $matcher = new BeEmptyMatcher;
-        $this->handleMatcher($this->_actual, $matcher);
-    }
-
-    public function beTrue()
-    {
+        return $matcher->getFailureMessageForShould();
     }
 }

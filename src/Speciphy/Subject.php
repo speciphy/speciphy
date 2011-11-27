@@ -34,13 +34,16 @@ class Subject
 
     public function should()
     {
-        $subject = call_user_func($this->getBlock());
-        return new PositiveExpectationHandler($subject);
+        return new PositiveExpectationHandler($this);
     }
 
     public function shouldNot()
     {
-        $subject = call_user_func($this->getBlock());
-        return new NegativeExpectationHandler($subject);
+        return new NegativeExpectationHandler($this);
+    }
+
+    public function getValue()
+    {
+        return call_user_func($this->_block);
     }
 }
