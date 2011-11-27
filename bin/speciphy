@@ -21,7 +21,6 @@ $loader->register();
 
 use Speciphy\Loader\SpecFileLoader;
 use Speciphy\ExampleGroupIterator;
-use Speciphy\Matchers;
 use Speciphy\Reporter;
 use Speciphy\Formatters\ProgressFormatter;
 use Speciphy\Formatters\DocumentationFormatter;
@@ -30,8 +29,6 @@ $reporter = new Reporter;
 $docFormatter = new DocumentationFormatter;
 $reporter->addFormatter(new ProgressFormatter(fopen('php://stdout', 'w')));
 $reporter->addFormatter($docFormatter);
-
-Matchers::define('beTrue', '\\Speciphy\\Matchers\\BeTrue');
 
 $files = new SpecFileLoader($argv[1]);
 foreach ($files as $file) {
