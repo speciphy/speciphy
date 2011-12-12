@@ -2,6 +2,7 @@
 namespace Speciphy\Tests;
 
 use Speciphy\ExampleGroup;
+use Speciphy\Subject;
 
 class ExampleGroupTest extends TestCase
 {
@@ -74,5 +75,16 @@ class ExampleGroupTest extends TestCase
         $group3->addChild($group4);
         $group4->addChild($group5);
         $this->assertSame(5, $group5->getNestLevel());
+    }
+
+    /**
+     * @test
+     */
+    public function getSubject_should_be_Subject_set_before()
+    {
+        $subject = new Subject(function () {});
+        $group   = new ExampleGroup('Foo');
+        $group->setSubject($subject);
+        $this->assertSame($subject, $group->getSubject());
     }
 }
