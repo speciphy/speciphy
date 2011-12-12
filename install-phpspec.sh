@@ -1,3 +1,4 @@
+#!/bin/sh
 if [ ! -d ./vendor ]
 then
   mkdir vendor
