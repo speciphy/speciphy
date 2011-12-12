@@ -87,4 +87,17 @@ class ExampleGroupTest extends TestCase
         $group->setSubject($subject);
         $this->assertSame($subject, $group->getSubject());
     }
+
+    /**
+     * @test
+     */
+    public function getSubject_should_be_Subject_set_to_outer_ExampleGroup_if_current_ExampleGroup_has_no_Subject()
+    {
+        $subject = new Subject(function () {});
+        $outer   = new ExampleGroup('Outer');
+        $outer->setSubject($subject);
+        $inner   = new ExampleGroup('Inner');
+        $outer->addChild($inner);
+        $this->assertSame($subject, $inner->getSubject());
+    }
 }

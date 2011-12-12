@@ -115,7 +115,7 @@ class ExampleGroup
 
     public function getSubject()
     {
-        return $this->_subject;
+        return isset($this->_subject) ? $this->_subject : $this->_parent->getSubject();
     }
 
     /**
