@@ -1,8 +1,6 @@
 <?php
 namespace Speciphy\DSL;
 
-use SpeciphyExamples\Stack;
-
 return describe('Array', array(
     context('When empty', array(
         'subject' => function () {
