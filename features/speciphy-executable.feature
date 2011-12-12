@@ -8,9 +8,9 @@ Feature: Speciphy executable
       namespace Speciphy\DSL;
 
       return describe("Boolean true", array(
-          subject(function () {
+          'subject' => function () {
               return true;
-          }),
+          },
 
           it('should be true', function ($it) {
               $it->should->beTrue();
@@ -33,9 +33,9 @@ Feature: Speciphy executable
       namespace Speciphy\DSL;
 
       return describe("Boolean true", array(
-          subject(function () {
+          'subject' => function () {
               return false; // Wrong subject
-          }),
+          },
 
           it('should be true', function ($it) {
               $it->should->beTrue();
