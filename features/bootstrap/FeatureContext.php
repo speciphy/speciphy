@@ -67,4 +67,12 @@ class FeatureContext extends BehatContext
             throw new Exception($diff, $e->getCode(), $e);
         }
     }
+
+    /**
+     * @AfterScenario
+     */
+    public function cleanSpecFolders()
+    {
+        exec("rm -rf " . escapeshellarg("{$this->sandboxDir}/spec"));
+    }
 }
