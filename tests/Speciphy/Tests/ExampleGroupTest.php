@@ -100,4 +100,15 @@ class ExampleGroupTest extends TestCase
         $outer->addChild($inner);
         $this->assertSame($subject, $inner->getSubject());
     }
+
+    /**
+     * @test
+     */
+    public function getSubject_should_be_NULL_if_no_ancestors_have_subject()
+    {
+        $outer = new ExampleGroup('Outer');
+        $inner = new ExampleGroup('Inner');
+        $outer->addChild($inner);
+        $this->assertNull($inner->getSubject());
+    }
 }
