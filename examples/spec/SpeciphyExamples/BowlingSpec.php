@@ -13,8 +13,8 @@ return describe('Bowling', array(
             return $bowling;
         },
 
-        it('スコアは 0 になる', function ($it) {
-            $it->getScore()->should->be(0);
+        it('スコアは 0 になる', function ($bowling) {
+            $bowling->score->should->equal(0);
         }),
     )),
 ));
