@@ -6,35 +6,45 @@ use Speciphy\Example;
 use Speciphy\Pending;
 use Speciphy\Subject;
 
-function describe($description, $specElements) {
+function describe($description, $specElements = NULL) {
     $exampleGroup = new ExampleGroup($description);
 
-    foreach ($specElements as $key => $value) {
-        if (is_int($key)) {
-            if ($value instanceof ExampleGroup || $value instanceof Example) {
-                $exampleGroup->addChild($value);
-            } else if (is_string($value)) {
-                $exampleGroup->addChild(new Pending($value));
-            }
-        } else if (is_string($key)) {
-            switch ($key) {
-            case 'subject':
-                $exampleGroup->setSubject(new Subject($value));
-                break;
-            case 'before':
-                $exampleGroup->setBeforeHook($value);
-                break;
-            case 'after':
-                $exampleGroup->setAfterHook($value);
-                break;
-            case 'before_all':
-            case 'beforeAll':
-                $exampleGroup->setBeforeAllHook($value);
-                break;
-            case 'after_all':
-            case 'afterAll':
-                $exampleGroup->setAfterAllHook($value);
-                break;
+    if (isset($specElements) && ! is_array($specElements)) {
+        $args = func_get_args();
+        array_shift($args);
+        $specElements = $args;
+    }
+
+    if (isset($specElements)) {
+        foreach ($specElements as $key => $value) {
+            if (is_int($key)) {
+                if ($value instanceof ExampleGroup || $value instanceof Example) {
+                    $exampleGroup->addChild($value);
+                } else if ($value instanceof Subject) {
+                    $exampleGroup->setSubject($value);
+                } else if (is_string($value)) {
+                    $exampleGroup->addChild(new Pending($value));
+                }
+            } else if (is_string($key)) {
+                switch ($key) {
+                case 'subject':
+                    $exampleGroup->setSubject(new Subject($value));
+                    break;
+                case 'before':
+                    $exampleGroup->setBeforeHook($value);
+                    break;
+                case 'after':
+                    $exampleGroup->setAfterHook($value);
+                    break;
+                case 'before_all':
+                case 'beforeAll':
+                    $exampleGroup->setBeforeAllHook($value);
+                    break;
+                case 'after_all':
+                case 'afterAll':
+                    $exampleGroup->setAfterAllHook($value);
+                    break;
+                }
             }
         }
     }
@@ -42,7 +52,7 @@ function describe($description, $specElements) {
     return $exampleGroup;
 }
 
-function context($description, $examples) {
+function context($description, $examples = NULL) {
     return describe($description, $examples);
 }
 

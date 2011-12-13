@@ -12,7 +12,7 @@ class DSLTest extends TestCase
      */
     public function describe_creates_ExampleGroup_object()
     {
-        $this->assertInstanceOf('Speciphy\\ExampleGroup', DSL\describe('Foo', array()));
+        $this->assertInstanceOf('Speciphy\\ExampleGroup', DSL\describe('Foo'));
     }
 
     /**
@@ -63,6 +63,27 @@ class DSLTest extends TestCase
             'subject' => $f,
         ));
         $this->assertSame($f, $exampleGroup->getSubject()->getBlock());
+    }
+
+    /**
+     * @test
+     */
+    public function describe_creates_ExampleGroup_from_arguments_if_2nd_argument_is_not_array()
+    {
+        $inner = DSL\describe('Foo');
+        $outer = DSL\describe('Bar', $inner);
+        $examples = $outer->getExamples();
+        $this->assertSame($inner, $examples[0]);
+    }
+
+    /**
+     * @test
+     */
+    public function describe_creates_ExampleGroup_have_subject_set_as_argument()
+    {
+        $subject = new Subject(function () {});
+        $group = DSL\describe('Foo', $subject);
+        $this->assertSame($subject, $group->getSubject());
     }
 
     /**
