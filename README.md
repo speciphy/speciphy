@@ -43,23 +43,23 @@ Example
 <?php
 namespace Speciphy\DSL;
 
-return describe('Bowling', array(
-    describe('->score', array(
-        context('all gutter game', array(
-            'subject' => function () {
+return describe('Bowling',
+    describe('->score',
+        context('all gutter game',
+            subject(function () {
                 $bowling = new Bowling;
                 for ($i = 1; $i <= 20; $i++) {
                     $bowling->hit(0);
                 }
                 return $bowling;
-            },
+            }),
 
             it('should equal 0', function ($bowling) {
                 $bowling->score->should->equal(0);
-            });
-        )),
-    )),
-));
+            })
+        )
+    )
+);
 ```
 
 Author
