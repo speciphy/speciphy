@@ -20,19 +20,19 @@ class DSLTest extends TestCase
      */
     public function describe_creates_ExampleGroup_and_sets_description()
     {
-        $exampleGroup = DSL\describe('Foo', array());
+        $exampleGroup = DSL\describe('Foo');
         $this->assertSame('Foo', $exampleGroup->getDescription());
     }
 
     /**
      * @test
      */
-    public function describe_creates_ExampleGroup_have_Example_set_with_array()
+    public function describe_creates_ExampleGroup_have_Example()
     {
-        $exampleGroup = DSL\describe('Foo', array(
+        $exampleGroup = DSL\describe('Foo',
             DSL\it('should be foo', function () {
-            }),
-        ));
+            })
+        );
         $examples = $exampleGroup->getExamples();
         $example  = $examples[0];
         $this->assertInstanceOf('Speciphy\Example', $example);
