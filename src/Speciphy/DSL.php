@@ -18,7 +18,9 @@ function describe($description, $specElements = NULL) {
     if (isset($specElements)) {
         foreach ($specElements as $key => $value) {
             if (is_int($key)) {
-                if ($value instanceof ExampleGroup || $value instanceof Example) {
+                if ($value instanceof ExampleGroup ||
+                    $value instanceof Example ||
+                    $value instanceof Pending) {
                     $exampleGroup->addChild($value);
                 } else if ($value instanceof Subject) {
                     $exampleGroup->setSubject($value);

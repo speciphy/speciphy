@@ -42,15 +42,15 @@ class DSLTest extends TestCase
     /**
      * @test
      */
-    public function describe_creates_ExampleGroup_have_Pending_set_with_array()
+    public function describe_creates_ExampleGroup_have_Pending()
     {
-        $exampleGroup = DSL\describe('Foo', array(
-            'It should be foo.',
-        ));
+        $exampleGroup = DSL\describe('Foo',
+            DSL\it('should be foo')
+        );
         $examples = $exampleGroup->getExamples();
         $example  = $examples[0];
         $this->assertInstanceOf('Speciphy\Pending', $example);
-        $this->assertSame('It should be foo.', $example->getDescription());
+        $this->assertSame('should be foo', $example->getDescription());
     }
 
     /**
