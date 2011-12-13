@@ -53,3 +53,7 @@ function it($description, $block = NULL) {
         return new Example($description, $block);
     }
 }
+
+function subject($block) {
+    return new Subject($block);
+}

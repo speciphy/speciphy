@@ -91,4 +91,14 @@ class DSLTest extends TestCase
     {
         $this->assertInstanceOf('Speciphy\\Example', DSL\it('should be foo', function () {}));
     }
+
+    /**
+     * @test
+     */
+    public function subject_function_should_be_Subject_object()
+    {
+        $block = function () {};
+        $subject = DSL\subject($block);
+        $this->assertSame($block, $subject->getBlock());
+    }
 }
