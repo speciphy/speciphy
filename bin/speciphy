@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL | E_STRICT);
+
+set_include_path(join(PATH_SEPARATOR, array(
+    realpath(__DIR__ . '/../src'),
+    realpath(__DIR__ . '/../vendor/php'),
+    realpath(__DIR__ . '/../examples/src'),
+    get_include_path(),
+)));
+
+require_once 'Speciphy/DSL.php';
+
+require_once __DIR__ . '/../vendor/php/PHPSpec/Loader/UniversalClassLoader.php';
+$loader = new \PHPSpec\Loader\UniversalClassLoader();
+$loader->registerNamespace('PHPSpec', __DIR__ . '/../vendor/php');
+$loader->registerNamespace('Speciphy', __DIR__ . '/../src');
+$loader->registerNamespace('SpeciphyExamples', __DIR__ . '/../examples/src');
+$loader->register();
+
+use Speciphy\Loader\SpecFileLoader;
+use Speciphy\ExampleGroupIterator;
+use Speciphy\Reporter;
+use Speciphy\Formatters\ProgressFormatter;
+use Speciphy\Formatters\DocumentationFormatter;
+
+$reporter = new Reporter;
+$docFormatter = new DocumentationFormatter;
+$reporter->addFormatter(new ProgressFormatter(fopen('php://stdout', 'w')));
+$reporter->addFormatter($docFormatter);
+
+$files = new SpecFileLoader($argv[1]);
+foreach ($files as $file) {
+    $exampleGroup = include $file->getRealpath();
+    $exampleGroup->run($reporter);
+}
+
+echo PHP_EOL, PHP_EOL, $docFormatter->get();

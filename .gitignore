@@ -1,0 +1,4 @@
+*.swp
+sandbox
+pyrus.phar
+vendor/*
