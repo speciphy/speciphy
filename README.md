@@ -30,7 +30,7 @@ Proposal for xSpec BDD Framework for PHP
 ----------------------------------------
 
 1. Use function in namespace, Not method in class
-2. Use array to build nested structure
+2. <del>Use array to build nested structure</del> (Deprecated since 0.1.0)
 
 More details are in below slide.
 
@@ -43,23 +43,24 @@ Example
 <?php
 namespace Speciphy\DSL;
 
-return describe('Bowling', array(
-    describe('->score', array(
-        context('all gutter game', array(
-            'subject' => function () {
+return
+describe('Bowling',
+    describe('->score',
+        context('all gutter game',
+            subject(function () {
                 $bowling = new Bowling;
                 for ($i = 1; $i <= 20; $i++) {
                     $bowling->hit(0);
                 }
                 return $bowling;
-            },
+            }),
 
             it('should equal 0', function ($bowling) {
                 $bowling->score->should->equal(0);
-            });
-        )),
-    )),
-));
+            })
+        )
+    )
+);
 ```
 
 Author
