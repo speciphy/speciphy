@@ -4,4 +4,5 @@ php:
   - 5.3.8
   - 5.4
 
+before_install: sh install-phpspec.sh
 script: phpunit --coverage-text
