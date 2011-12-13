@@ -1,7 +1,6 @@
 <?php
 namespace Speciphy\Tests;
 
-require_once 'Speciphy/DSL.php';
 use Speciphy\DSL;
 use Speciphy\Subject;
 
