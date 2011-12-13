@@ -7,15 +7,15 @@ Feature: Speciphy executable
       <?php
       namespace Speciphy\DSL;
 
-      return describe("Boolean true", array(
-          'subject' => function () {
+      return describe("Boolean true",
+          subject(function () {
               return true;
-          },
+          }),
 
           it('should be true', function ($it) {
               $it->should->beTrue();
-          }),
-      ));
+          })
+      );
       """
     When I run Speciphy executable with args "."
     Then The output should contain:
@@ -32,15 +32,15 @@ Feature: Speciphy executable
       <?php
       namespace Speciphy\DSL;
 
-      return describe("Boolean true", array(
-          'subject' => function () {
+      return describe("Boolean true",
+          subject(function () {
               return false; // Wrong subject
-          },
+          }),
 
           it('should be true', function ($it) {
               $it->should->beTrue();
-          }),
-      ));
+          })
+      );
       """
     When I run Speciphy executable with args "."
     Then The output should contain:

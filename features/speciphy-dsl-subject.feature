@@ -16,19 +16,19 @@ Feature: Speciphy DSL's subject
           }
       }
 
-      return describe('Bowling', array(
-          'subject' => function () {
+      return describe('Bowling',
+          subject(function () {
               $bowling = new Bowling;
               for ($i = 1; $i <= 20; $i++) {
                   $bowling->hit(0);
               }
               return $bowling;
-          },
+          }),
 
           it('score should be 0', function ($it) {
               $it->score->should->be(0);
-          }),
-      ));
+          })
+      );
       """
     When I run Speciphy executable with args "."
     Then The output should contain:
@@ -59,23 +59,23 @@ Feature: Speciphy DSL's subject
           }
       }
 
-      return describe('Bowling', array(
-          describe('getScore()', array(
-              'subject' => function () {
+      return describe('Bowling',
+          describe('getScore()',
+              subject(function () {
                   $bowling = new Bowling;
                   for ($i = 1; $i <= 20; $i++) {
                       $bowling->hit(0);
                   }
                   return $bowling->getScore();
-              },
+              }),
 
-              context('When all gutter game', array(
+              context('When all gutter game',
                   it('should be 0', function ($it) {
                       $it->should->be(0);
-                  }),
-              )),
-          )),
-      ));
+                  })
+              )
+          )
+      );
       """
       When I run Speciphy executable with args "."
       Then The output should contain:
