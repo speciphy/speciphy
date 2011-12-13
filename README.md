@@ -40,26 +40,26 @@ Example
 -------
 
 ```php
-    <?php
-    namespace Speciphy\DSL;
+<?php
+namespace Speciphy\DSL;
 
-    return describe('Bowling', array(
-        describe('->score', array(
-            context('all gutter game', array(
-                'subject' => function () {
-                    $bowling = new Bowling;
-                    for ($i = 1; $i <= 20; $i++) {
-                        $bowling->hit(0);
-                    }
-                    return $bowling;
-                },
+return describe('Bowling', array(
+    describe('->score', array(
+        context('all gutter game', array(
+            'subject' => function () {
+                $bowling = new Bowling;
+                for ($i = 1; $i <= 20; $i++) {
+                    $bowling->hit(0);
+                }
+                return $bowling;
+            },
 
-                it('should equal 0', function ($bowling) {
-                    $bowling->score->should->equal(0);
-                });
-            )),
+            it('should equal 0', function ($bowling) {
+                $bowling->score->should->equal(0);
+            });
         )),
-    ));
+    )),
+));
 ```
 
 Author
