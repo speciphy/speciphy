@@ -1,6 +1,9 @@
 <?php
 namespace Speciphy\DSL;
 
+// Dummy class for auto-loading.
+class Functions {}
+
 use Speciphy\ExampleGroup;
 use Speciphy\Example;
 use Speciphy\Pending;
