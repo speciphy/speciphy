@@ -56,34 +56,11 @@ class DSLTest extends TestCase
     /**
      * @test
      */
-    public function describe_creates_ExampleGroup_have_subject_set_with_array()
-    {
-        $f = function () {};
-        $exampleGroup = DSL\describe('Foo', array(
-            'subject' => $f,
-        ));
-        $this->assertSame($f, $exampleGroup->getSubject()->getBlock());
-    }
-
-    /**
-     * @test
-     */
-    public function describe_creates_ExampleGroup_from_arguments_if_2nd_argument_is_not_array()
-    {
-        $inner = DSL\describe('Foo');
-        $outer = DSL\describe('Bar', $inner);
-        $examples = $outer->getExamples();
-        $this->assertSame($inner, $examples[0]);
-    }
-
-    /**
-     * @test
-     */
-    public function describe_creates_ExampleGroup_have_subject_set_as_argument()
+    public function describe_creates_ExampleGroup_have_Subject()
     {
         $subject = new Subject(function () {});
-        $group = DSL\describe('Foo', $subject);
-        $this->assertSame($subject, $group->getSubject());
+        $exampleGroup = DSL\describe('Foo', $subject);
+        $this->assertSame($subject, $exampleGroup->getSubject());
     }
 
     /**
@@ -103,9 +80,7 @@ class DSLTest extends TestCase
      */
     public function subject_is_not_an_Example()
     {
-        $exampleGroup = DSL\describe('Foo', array(
-            'subject' => function () {},
-        ));
+        $exampleGroup = DSL\describe('Foo', DSL\subject(function () {}));
         $this->assertSame(0, count($exampleGroup->getExamples()));
     }
 
