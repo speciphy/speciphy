@@ -43,7 +43,8 @@ Example
 <?php
 namespace Speciphy\DSL;
 
-return describe('Bowling',
+return
+describe('Bowling',
     describe('->score',
         context('all gutter game',
             subject(function () {
