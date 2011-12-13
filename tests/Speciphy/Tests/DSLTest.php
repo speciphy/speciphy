@@ -89,6 +89,18 @@ class DSLTest extends TestCase
     /**
      * @test
      */
+    public function context_should_treat_3rd_argument()
+    {
+        $example0 = DSL\it('Foo', function () {});
+        $example1 = DSL\it('Bar', function () {});
+        $group = DSL\context('Baz', $example0, $example1);
+        $examples = $group->getExamples();
+        $this->assertSame($examples[1], $example1);
+    }
+
+    /**
+     * @test
+     */
     public function subject_is_not_an_Example()
     {
         $exampleGroup = DSL\describe('Foo', array(

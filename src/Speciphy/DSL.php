@@ -53,7 +53,7 @@ function describe($description, $specElements = NULL) {
 }
 
 function context($description, $examples = NULL) {
-    return describe($description, $examples);
+    return call_user_func_array('\\Speciphy\\DSL\\describe', func_get_args());
 }
 
 function it($description, $block = NULL) {
