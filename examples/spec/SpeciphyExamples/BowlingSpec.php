@@ -1,6 +1,8 @@
 <?php
 namespace Speciphy\DSL;
 
+require_once __DIR__ . '/../../src/SpeciphyExamples/Bowling.php';
+
 use \SpeciphyExamples\Bowling;
 
 return describe('Bowling',
