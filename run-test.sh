@@ -1,8 +1,10 @@
 #!/bin/sh
 if [ "$TESTING_FRAMEWORK" = "PHPUnit" ]; then
-  phpunit
+  phpunit --coverage-text
 elif [ "$TESTING_FRAMEWORK" = "Behat" ]; then
-  wget https://github.com/downloads/Behat/Behat/behat.phar
+  if [ ! -f behat.phar ]; then
+    wget https://github.com/downloads/Behat/Behat/behat.phar
+  fi
   php behat.phar
 fi
 
