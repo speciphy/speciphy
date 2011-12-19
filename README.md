@@ -1,6 +1,8 @@
 Speciphy
 ========
 
+[![Build Status](https://secure.travis-ci.org/yuya-takeyama/Speciphy.png?branch=develop)](http://travis-ci.org/yuya-takeyama/Speciphy)
+
 Yet Another xSpec BDD Framework for PHP.
 
 Strongly inspired from RSpec.
