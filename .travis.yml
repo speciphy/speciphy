@@ -4,5 +4,9 @@ php:
   - 5.3.8
   - 5.4
 
-before_install: sh install-phpspec.sh
-script: phpunit --coverage-text
+env:
+  - TESTING_FRAMEWORK=PHPUnit
+  - TESTING_FRAMEWORK=Behat
+
+before_install: sh install-vendor.sh
+script: sh run-test.sh

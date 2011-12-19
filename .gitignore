@@ -1,4 +1,5 @@
 *.swp
 sandbox
 pyrus.phar
+behat.phar
 vendor/*
