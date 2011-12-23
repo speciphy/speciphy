@@ -4,6 +4,11 @@ php:
   - 5.3.8
   - 5.4
 
+branches:
+  only:
+    - master
+    - develop
+
 env:
   - TESTING_FRAMEWORK=PHPUnit
   - TESTING_FRAMEWORK=Behat
