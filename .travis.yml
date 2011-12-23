@@ -8,5 +8,5 @@ env:
   - TESTING_FRAMEWORK=PHPUnit
   - TESTING_FRAMEWORK=Behat
 
-before_install: sh install-vendor.sh
+before_install: php onion.phar bundle
 script: sh run-test.sh

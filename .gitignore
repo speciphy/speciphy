@@ -3,3 +3,4 @@ sandbox
 pyrus.phar
 behat.phar
 vendor/*
+.onion
