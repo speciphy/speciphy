@@ -13,5 +13,7 @@ env:
   - TESTING_FRAMEWORK=PHPUnit
   - TESTING_FRAMEWORK=Behat
 
-before_install: php onion.phar bundle
+before_install:
+ - sh install-phar.sh
+ - php onion.phar bundle
 script: sh run-test.sh

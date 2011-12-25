@@ -1,35 +1,38 @@
 <?xml version="1.0"?>
-<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0                                 http://pear.php.net/dtd/tasks-1.0.xsd                                 http://pear.php.net/dtd/package-2.0                                 http://pear.php.net/dtd/package-2.0.xsd">
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0        http://pear.php.net/dtd/tasks-1.0.xsd        http://pear.php.net/dtd/package-2.0        http://pear.php.net/dtd/package-2.0.xsd">
   <name>Speciphy</name>
-  <channel>pear.php.net</channel>
-  <summary>Yet Another BDD Framework</summary>
-  <description>Yet Another BDD Framework</description>
+  <channel>pear.speciphy.net</channel>
+  <summary>xSpec BDD Framework</summary>
+  <description>xSpec BDD Framework</description>
   <lead>
     <name>Yuya Takeyama</name>
     <user/>
     <email>sign.of.the.wolf.pentagram@gmail.com</email>
     <active>1</active>
   </lead>
-  <lead>
-    <name>Yuya Takeyama</name>
-    <user/>
-    <email>sign.of.the.wolf.pentagram@gmail.com</email>
-    <active>1</active>
-  </lead>
-  <date>2011-12-23</date>
-  <time>11:10:27</time>
+  <date>2011-12-25</date>
+  <time>15:06:44</time>
   <version>
     <release>0.1.1</release>
     <api>0.1.1</api>
   </version>
   <stability>
-    <release>alpha</release>
-    <api>alpha</api>
+    <release>beta</release>
+    <api>beta</api>
   </stability>
-  <license>PHP LICENSE</license>
+  <license>PHP</license>
   <notes>-</notes>
   <contents>
     <dir name="/">
+      <file install-as="src/SpeciphyExamples/Bowling.php" name="examples/src/SpeciphyExamples/Bowling.php" role="doc" md5sum="0bd1a94015a04543961fa5d2173ba72a"/>
+      <file install-as="spec/SpeciphyExamples/ArraySpec.php" name="examples/spec/SpeciphyExamples/ArraySpec.php" role="doc" md5sum="0eb78797d124a25bb908223d18e9a2d9"/>
+      <file install-as="spec/SpeciphyExamples/BowlingSpec.php" name="examples/spec/SpeciphyExamples/BowlingSpec.php" role="doc" md5sum="c3833c4d8d624d413c2711dafb0a24c2"/>
+      <file install-as="bootstrap.php" name="tests/bootstrap.php" role="test" md5sum="d2173c957f9741f8dbb4a59ef01ee349"/>
+      <file install-as="Speciphy/Tests/SubjectTest.php" name="tests/Speciphy/Tests/SubjectTest.php" role="test" md5sum="34c84a899fc1e63a70dfe220dfe209c3"/>
+      <file install-as="Speciphy/Tests/ExampleTest.php" name="tests/Speciphy/Tests/ExampleTest.php" role="test" md5sum="5d74cd56071750756b00ab0e3afd3efa"/>
+      <file install-as="Speciphy/Tests/TestCase.php" name="tests/Speciphy/Tests/TestCase.php" role="test" md5sum="a5353fade6bc6fc8637458c405c073c0"/>
+      <file install-as="Speciphy/Tests/ExampleGroupTest.php" name="tests/Speciphy/Tests/ExampleGroupTest.php" role="test" md5sum="956f0618236eb9a1273129a7f659dc27"/>
+      <file install-as="Speciphy/Tests/DSLTest.php" name="tests/Speciphy/Tests/DSLTest.php" role="test" md5sum="7fc8d278ac43f0b95a1db18fcc0230f9"/>
       <file install-as="Speciphy/Subject.php" name="src/Speciphy/Subject.php" role="php" md5sum="36804cb2462c3254bd0b32cfa844462d"/>
       <file install-as="Speciphy/DSL/Functions.php" name="src/Speciphy/DSL/Functions.php" role="php" md5sum="1af6aafe13f365e163cfe1af2ee14808"/>
       <file install-as="Speciphy/Reporter.php" name="src/Speciphy/Reporter.php" role="php" md5sum="812ad2c283dee3ed5be9f26addacee9c"/>
@@ -44,17 +47,7 @@
       <file install-as="Speciphy/ExampleGroupIterator.php" name="src/Speciphy/ExampleGroupIterator.php" role="php" md5sum="435138782c813d6244f72ebf005a6c4a"/>
       <file install-as="Speciphy/Formatters/ProgressFormatter.php" name="src/Speciphy/Formatters/ProgressFormatter.php" role="php" md5sum="cfe49dbddbfa6e195deab560180a0c0d"/>
       <file install-as="Speciphy/Formatters/DocumentationFormatter.php" name="src/Speciphy/Formatters/DocumentationFormatter.php" role="php" md5sum="a632708f66b15ab766fe83f8f3b16c1c"/>
-      <file install-as="bootstrap.php" name="tests/bootstrap.php" role="test" md5sum="5d38323e2601cb25b8dba91c77a180ec"/>
-      <file install-as="Speciphy/Tests/SubjectTest.php" name="tests/Speciphy/Tests/SubjectTest.php" role="test" md5sum="34c84a899fc1e63a70dfe220dfe209c3"/>
-      <file install-as="Speciphy/Tests/ExampleTest.php" name="tests/Speciphy/Tests/ExampleTest.php" role="test" md5sum="5d74cd56071750756b00ab0e3afd3efa"/>
-      <file install-as="Speciphy/Tests/TestCase.php" name="tests/Speciphy/Tests/TestCase.php" role="test" md5sum="a5353fade6bc6fc8637458c405c073c0"/>
-      <file install-as="Speciphy/Tests/ExampleGroupTest.php" name="tests/Speciphy/Tests/ExampleGroupTest.php" role="test" md5sum="956f0618236eb9a1273129a7f659dc27"/>
-      <file install-as="Speciphy/Tests/DSLTest.php" name="tests/Speciphy/Tests/DSLTest.php" role="test" md5sum="7fc8d278ac43f0b95a1db18fcc0230f9"/>
-      <file install-as="src/SpeciphyExamples/Bowling.php" name="examples/src/SpeciphyExamples/Bowling.php" role="doc" md5sum="0bd1a94015a04543961fa5d2173ba72a"/>
-      <file install-as="spec/SpeciphyExamples/ArraySpec.php" name="examples/spec/SpeciphyExamples/ArraySpec.php" role="doc" md5sum="0eb78797d124a25bb908223d18e9a2d9"/>
-      <file install-as="spec/SpeciphyExamples/BowlingSpec.php" name="examples/spec/SpeciphyExamples/BowlingSpec.php" role="doc" md5sum="c3833c4d8d624d413c2711dafb0a24c2"/>
-      <file install-as="README.md" name="README.md" role="doc" md5sum="abc057d022ce16ec5fb3643b3e6de447"/>
-      <file install-as="speciphy" name="bin/speciphy" role="script" md5sum="143d7c00db58cdb2ee631b93c7a102fd"/>
+      <file install-as="speciphy" name="bin/speciphy" role="script" md5sum="dfdb326479528f07df2ec9fa3de73e7b"/>
     </dir>
   </contents>
   <dependencies>
@@ -67,7 +60,8 @@
       </pearinstaller>
       <package>
         <name>PHPSpec</name>
-        <channel>pear.phpspec.org</channel>
+        <channel>pear.phpspec.net</channel>
+        <min>1.2.2</min>
       </package>
     </required>
   </dependencies>
