@@ -1,8 +1,8 @@
 Speciphy
 ========
 
-master: [![Build Status](https://secure.travis-ci.org/speciphy/speciphy.png?branch=master)](http://travis-ci.org/yuya-takeyama/Speciphy)
-develop: [![Build Status](https://secure.travis-ci.org/speciphy/speciphy.png?branch=develop)](http://travis-ci.org/yuya-takeyama/Speciphy)
+master: [![Build Status](https://secure.travis-ci.org/speciphy/speciphy.png?branch=master)](http://travis-ci.org/speciphy/speciphy)
+develop: [![Build Status](https://secure.travis-ci.org/speciphy/speciphy.png?branch=develop)](http://travis-ci.org/speciphy/speciphy)
 
 xSpec BDD Framework for PHP.
 
