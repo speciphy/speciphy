@@ -9,6 +9,8 @@ use Speciphy\Example;
 use Speciphy\Pending;
 use Speciphy\Subject;
 
+use \Esperance\Assertion;
+
 function describe($description) {
     $exampleGroup = new ExampleGroup($description);
 
@@ -43,4 +45,8 @@ function it($description, $block = NULL) {
 
 function subject($block) {
     return new Subject($block);
+}
+
+function expect($subject) {
+    return new Assertion($subject);
 }
