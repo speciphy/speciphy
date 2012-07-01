@@ -2,7 +2,6 @@
 namespace Speciphy;
 
 use Speciphy\ExampleInterface;
-use PHPSpec\Specification\Interceptor\InterceptorFactory;
 
 class Example implements ExampleInterface
 {
@@ -79,9 +78,7 @@ class Example implements ExampleInterface
             if (empty($subject)) {
                 call_user_func($this->_block);
             } else {
-                call_user_func($this->_block,
-                    InterceptorFactory::create($subject->getValue())
-                );
+                call_user_func($this->_block, $subject->getValue());
             }
             $reporter->examplePassed($this);
         } catch (\Exception $e) {

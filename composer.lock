@@ -1,0 +1,19 @@
+{
+    "hash": "d51d5d25bfd23ae7ad0bfd833c3f200e",
+    "packages": [
+        {
+            "package": "esperance/esperance",
+            "version": "dev-master",
+            "source-reference": "v0.0.1",
+            "commit-date": "1341131024"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "esperance/esperance": 20
+    }
+}
