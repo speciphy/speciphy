@@ -25,7 +25,7 @@ Feature: Speciphy DSL using not array but function argument.
           }),
 
           it('score should be 0', function ($bowling) {
-              $bowling->score->should->be(0);
+              expect($bowling->score)->to->be(0);
           })
       );
       """

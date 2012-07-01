@@ -26,7 +26,7 @@ Feature: Speciphy DSL's subject
           }),
 
           it('score should be 0', function ($it) {
-              $it->score->should->be(0);
+              expect($it->score)->to->be(0);
           })
       );
       """
@@ -71,7 +71,7 @@ Feature: Speciphy DSL's subject
 
               context('When all gutter game',
                   it('should be 0', function ($it) {
-                      $it->should->be(0);
+                      expect($it)->to->be(0);
                   })
               )
           )

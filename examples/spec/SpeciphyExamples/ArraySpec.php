@@ -8,7 +8,7 @@ return describe('Array',
         }),
 
         it('should be empty', function ($it) {
-            $it->should->beEmpty();
+            expect($it)->to->be->empty();
         })
     ),
 
@@ -18,7 +18,7 @@ return describe('Array',
         }),
 
         it('should not be empty', function ($it) {
-            $it->shouldNot->beEmpty();
+            expect($it)->to->not->be->empty();
         })
     )
 );
