@@ -3,11 +3,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL | E_STRICT);
 
-require_once __DIR__ . '/../vendor/pear/PHPSpec/Loader/UniversalClassLoader.php';
-$loader = new \PHPSpec\Loader\UniversalClassLoader();
-$loader->registerNamespace('PHPSpec', __DIR__ . '/../vendor/pear');
-$loader->registerNamespace('Speciphy', __DIR__ . '/../src');
-$loader->register();
+require __DIR__ . '/../vendor/autoload.php';
 
 use Speciphy\DSL\Functions;
 new Functions;

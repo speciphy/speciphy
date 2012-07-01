@@ -16,7 +16,7 @@ return describe('Bowling',
         }),
 
         it('スコアは 0 になる', function ($bowling) {
-            $bowling->score->should->equal(0);
+            expect($bowling->score)->to->be(0);
         })
     )
 );
