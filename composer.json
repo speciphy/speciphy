@@ -1,0 +1,12 @@
+{
+    "name": "speciphy/speciphy",
+    "description": "xSpec BDD Framework for PHP.",
+    "keywords": ["bdd", "tdd"],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-0": { "Speciphy": "src" }
+    }
+}
