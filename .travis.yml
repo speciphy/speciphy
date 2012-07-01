@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - 5.3.8
+  - 5.3
   - 5.4
 
 branches:
@@ -13,7 +13,6 @@ env:
   - TESTING_FRAMEWORK=PHPUnit
   - TESTING_FRAMEWORK=Behat
 
-before_install:
- - sh install-phar.sh
- - php onion.phar bundle
+before_script: sh install.sh
+
 script: sh run-test.sh
