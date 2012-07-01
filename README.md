@@ -13,7 +13,7 @@ Features
 
 - Nested context
 - Specification with string
-- Using PHPSpec Interceptor and Matcher(s)
+- Expectation DSL provided by [Esp&eacute;rance](https://github.com/yuya-takeyama/esperance)
 
 Why I make this
 ---------------
@@ -59,7 +59,7 @@ describe('Bowling',
             }),
 
             it('should equal 0', function ($bowling) {
-                $bowling->score->should->equal(0);
+                expect($bowling->score)->to->be(0);
             })
         )
     )
